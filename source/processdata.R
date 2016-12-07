@@ -22,6 +22,9 @@ re.phz.vitro <- reshape(phz.vitro, timevar="State", idvar=c("ID", "Gruppe"),
                         direction="wide")
 re.phz.vitro <- re.phz.vitro[order(re.phz.vitro$ID),]
 
+# Exclude constant columns[]
+re.ecs.fall <- subset(re.ecs.fall, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
+
 # Include oxo
 oxo.ecs.spring <- oxo.all[33:44, ]
 
