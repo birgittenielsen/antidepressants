@@ -55,12 +55,14 @@ stopifnot(all(re.ecs.spring$ID == oxo.ecs.spring$ID))
 re.ecs.spring$oxo <- oxo.ecs.spring$Ratio
 re.ecs.fall$oxo <- oxo.ecs.fall$Ratio
 
-#New PHZ data frame with all data in group 1 and 2
+#New PHZ data frame with all data in group 0 and 1
 re.phz.vivo.oxo <- re.phz.vivo[which(re.phz.vivo$Gruppe == 0 | re.phz.vivo$Gruppe == 1),]
-
+#Oxo data included in reshape PHZ vivo data
 re.phz.vivo.oxo$oxo <- oxo.phz[which(oxo.phz$ID != 23),]$Ratio
 
 # Save as csv files in data/processed
 write.csv(re.ecs.spring, file="./data/processed/re.ecs.spring.csv")
 write.csv(re.ecs.fall, file="./data/processed/re.ecs.fall.csv")
 write.csv(re.phz.vivo.oxo, file="./data/processed/re.phz.vivo.oxo.csv")
+write.csv(re.phz.vitro, file="./data/processed/re.phz.vitro.csv")
+write.csv(re.phz.vivo, file="./data/processed/re.phz.vivo.csv")
