@@ -3,16 +3,23 @@ ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 alpha <- 0.05
 cols <- ecs.fall[4:25]
 colnames <- names(ecs.fall[4:25])
-tests <- lapply(data, function(x) {
-  t.test(x ~ Gruppe, data=ecs.fall, var.equal=TRUE)
-  })
+tests <- lapply(cols, function(x) {
+  test = t.test(x ~ Gruppe, data=ecs.fall, var.equal=TRUE)
+  if(test["p.value"] < alpha) {
+    return(list(TRUE, test, x))
+  } else {
+    return(list(FALSE, "Not statistically significant"))
+  }
+})
 
-for(df in ) {
-  print(col)
-  print(colname)
+for(testa in tests) {
+  for(testb in tests) {
+    if(test[[1]]) {
+      cor(testa[[3]], testb[[3]], method="pearson")
+    }
+  }
 }
 
-cor(data.matrix(S), method="pearson")
 
 # alpha = 0.05
 # for(name in names(ecs.fall)) {
