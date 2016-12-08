@@ -1,10 +1,11 @@
 ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
-cols = ecs.fall[4:25]
-colnames = names(ecs.fall[4:25])
-tests = lapply(data, function(x) {
+alpha <- 0.05
+cols <- ecs.fall[4:25]
+colnames <- names(ecs.fall[4:25])
+tests <- lapply(data, function(x) {
   t.test(x ~ Gruppe, data=ecs.fall, var.equal=TRUE)
-})
+  })
 
 for(df in ) {
   print(col)
