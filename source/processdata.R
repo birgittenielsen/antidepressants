@@ -24,6 +24,9 @@ re.phz.vitro <- re.phz.vitro[order(re.phz.vitro$ID),]
 
 # Exclude constant columns[]
 re.ecs.fall <- subset(re.ecs.fall, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
+re.ecs.spring <- subset(re.ecs.spring, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
+re.phz.vivo <- subset(re.phz.vivo, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
+re.phz.vitro <- subset(re.phz.vitro, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
 
 # Include oxo
 oxo.ecs.spring <- oxo.all[33:44, ]
