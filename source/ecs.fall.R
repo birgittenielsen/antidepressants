@@ -1,8 +1,8 @@
 ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
-alpha <- 0.04
-cols <- ecs.fall[4:25]
-colnames <- names(ecs.fall[4:25])
+alpha <- 0.05
+cols <- ecs.fall[4:26]
+colnames <- names(ecs.fall[4:26])
 tests <- lapply(cols, function(x) {
   test = t.test(x ~ Gruppe, data=ecs.fall)
   if(test["p.value"] < alpha) {
@@ -11,6 +11,18 @@ tests <- lapply(cols, function(x) {
     return(list(FALSE, "Not statistically significant"))
   }
 })
+
+
+for(name in names(tests)) {
+  print(name)
+  print(tests[[name]])
+}
+
+
+
+
+
+
 
 # for(testa in tests) {
 #  for(testb in tests) {
