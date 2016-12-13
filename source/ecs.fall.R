@@ -1,6 +1,6 @@
 ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
-alpha <- 0.05
+alpha <- 0.04
 cols <- ecs.fall[4:25]
 colnames <- names(ecs.fall[4:25])
 tests <- lapply(cols, function(x) {
@@ -12,13 +12,13 @@ tests <- lapply(cols, function(x) {
   }
 })
 
-for(testa in tests) {
-  for(testb in tests) {
-    if(test[[1]]) {
-      cor(testa[[3]], testb[[3]], method="pearson")
-    }
-  }
-}
+# for(testa in tests) {
+#  for(testb in tests) {
+#    if(test[[1]]) {
+#      cor(testa[[3]], testb[[3]], method="pearson")
+#    }
+#  }
+#}
 
 
 # alpha = 0.05
