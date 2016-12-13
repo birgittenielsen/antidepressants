@@ -1,5 +1,7 @@
 phz.vivo.oxo <- read.csv("./data/processed/re.phz.vivo.oxo.csv", header=TRUE)
 
+#Indeholder kun gruppe 0 og 1 pga. oxo data
+
 cols = phz.vivo.oxo[4:25]
 colnames = names(phz.vivo.oxo[4:25])
 tests = lapply(cols, function(x) {
