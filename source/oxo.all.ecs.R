@@ -8,3 +8,5 @@ for(id in c(9,4,13,19,12,16,14,11)) {
 oxo.all.ecs <- oxo.all[17:44,]
 
 t.test(Ratio ~ Gruppe, data=oxo.all.ecs)
+
+#Kør correlation mellem ratio og weight data
