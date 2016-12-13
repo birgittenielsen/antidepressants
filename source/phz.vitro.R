@@ -8,7 +8,7 @@ tests <- lapply(cols, function(x) {
   anova_result <- anova(lm_result)
   aov_result <- aov(lm_result)
   TukeyHSD_result <- TukeyHSD(aov_result)
-  if(anova_result[1,5] < 0.04) {
+  if(anova_result[1,5] < 0.05) {
     return(list(TRUE, TukeyHSD_result)) 
   } else {
     return(list(FALSE))
