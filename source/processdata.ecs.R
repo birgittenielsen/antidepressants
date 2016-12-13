@@ -25,8 +25,8 @@ re.ecs.fall <- subset(re.ecs.fall, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
 re.ecs.spring <- subset(re.ecs.spring, select=-c(FCR.ETS, FPM.ROX, FCR.ROX))
 
 # Subset oxo data for including the data into reshaped data frame
-oxo.ecs.spring <- subset(oxo.all, ID > 100)
-oxo.ecs.spring.o <- subset(oxo.ecs.spring, ID != 401)
+oxo.ecs.spring <- subset(oxo.all, ID > 1000)
+oxo.ecs.spring.o <- subset(oxo.ecs.spring, ID != 4001)
 
 oxo.ecs.fall <- subset(oxo.all, ID < 21)
 oxo.ecs.fall.o <- subset(oxo.ecs.fall, ID != 13 & ID!= 18)
@@ -40,7 +40,7 @@ re.ecs.spring$oxo <- oxo.ecs.spring.o$Ratio
 re.ecs.fall$oxo <- oxo.ecs.fall.o$Ratio
 
 #Subsets weight dataframes
-weight.ecs.spring <- subset(weight, ID > 100)
+weight.ecs.spring <- subset(weight, ID > 1000)
 weight.ecs.spring <- weight.ecs.spring[order(weight.ecs.spring$ID),]
 
 weight.ecs.fall <- subset(weight, ID < 21)
