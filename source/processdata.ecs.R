@@ -46,7 +46,7 @@ weight.ecs.spring <- weight.ecs.spring[order(weight.ecs.spring$ID),]
 weight.ecs.fall <- subset(weight, ID < 21)
 weight.ecs.fall <- weight.ecs.fall[order(weight.ecs.fall$ID),]
 
-weight.ecs.spring.o <- subset(weight.ecs.spring, ID != 202 & ID != 401)
+weight.ecs.spring.o <- subset(weight.ecs.spring, ID != 2002 & ID != 4001)
 weight.ecs.fall.o <- subset(weight.ecs.fall, ID != 13 & ID != 18)
 
 stopifnot(all(re.ecs.spring$ID == weight.ecs.spring.o$ID))
