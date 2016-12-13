@@ -4,7 +4,7 @@ alpha <- 0.04
 cols <- ecs.fall[4:25]
 colnames <- names(ecs.fall[4:25])
 tests <- lapply(cols, function(x) {
-  test = t.test(x ~ Gruppe, data=ecs.fall, var.equal=TRUE)
+  test = t.test(x ~ Gruppe, data=ecs.fall)
   if(test["p.value"] < alpha) {
     return(list(TRUE, test, x))
   } else {
