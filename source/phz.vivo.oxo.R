@@ -12,3 +12,11 @@ tests = lapply(cols, function(x) {
     return("Not statistically significant")
   }
 })
+
+
+for(name in names(tests)) {
+  print(name)
+  print(tests[[name]])
+}
+
+#No significant difference between group 0 (control) and group 1 
