@@ -25,12 +25,12 @@ test.c <- rcorr(ecs.spring.cm, type="pearson")
 
 results.cm <- results(test.c$r, test.c$P)
 
-results.cm[which(results.cm$cor > 0.8 | results.cm$cor < -0.8 & results.cm$p < 0.05),]
+control <- results.cm[which(results.cm$cor > 0.8 | results.cm$cor < -0.8 & results.cm$p < 0.05),]
 
 #Correlation for treated group
 test.t <- rcorr(ecs.spring.tm, type="pearson")
 
 results.tm <- results(test.t$r, test.t$P)
 
-results.tm[which(results.tm$cor > 0.8 | results.tm$cor < -0.8 & results.tm$p < 0.05),]
+treated <- results.tm[which(results.tm$cor > 0.8 | results.tm$cor < -0.8 & results.tm$p < 0.05),]
 
