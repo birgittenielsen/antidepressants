@@ -1,8 +1,8 @@
 ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
 alpha <- 0.05
-cols <- ecs.fall[4:26]
-colnames <- names(ecs.fall[4:26])
+cols <- ecs.fall[4:27]
+colnames <- names(ecs.fall[4:27])
 tests <- lapply(cols, function(x) {
   test = t.test(x ~ Gruppe, data=ecs.fall)
   if(test["p.value"] < alpha) {
