@@ -51,6 +51,9 @@ stopifnot(all(re.ecs.fall$ID == weight.ecs.fall$ID))
 re.ecs.spring$weight <- weight.ecs.spring$Weight
 re.ecs.fall$weight <- weight.ecs.fall$Weight
 
+#Include new vector - OXPHOS CAPACITY-CII
+re.ecs.fall$OXCA.CII <- re.ecs.fall$FPM.CI.CII-re.ecs.fall$FPM.CII
+
 # Save as csv files in data/processed
 write.csv(re.ecs.spring, file="./data/processed/re.ecs.spring.csv")
 write.csv(re.ecs.fall, file="./data/processed/re.ecs.fall.csv")
