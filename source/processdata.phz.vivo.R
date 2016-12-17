@@ -17,7 +17,6 @@ re.phz.vivo.ow <- subset(re.phz.vivo, Gruppe == 1 | Gruppe == 0)
 
 #Subsetting weight dataframe 
 weight.phz.vivo <- subset(weight, ID > 20 & ID < 39)
-weight.phz.vivo <- weight.phz.vivo[order(re.phz.vivo$ID),]
 
 stopifnot(all(re.phz.vivo.ow$ID == weight.phz.vivo$ID))
 
@@ -29,10 +28,10 @@ re.phz.vivo.ow$weight <- weight.phz.vivo
 oxo.phz <- subset(oxo.all, ID > 20 & ID < 39)
 oxo.phz <- oxo.phz[order(oxo.phz$ID),]
 
-#Oxo data included in reshape PHZ vivo data
-re.phz.vivo.oxo$oxo <- oxo.phz[which(oxo.phz$ID != 23),]$Ratio
-
+#Oxo and weight data included in reshape PHZ vivo data
+re.phz.vivo.ow$oxo <- oxo.phz$Ratio
+re.phz.vivo.ow$weight <- weight.phz.vivo$Weight
 
 #Saving as csv file in data/processed
 write.csv(re.phz.vivo, file="./data/processed/re.phz.vivo.csv")
-write.csv(re.phz.vivo.oxo, file="./data/processed/re.phz.vivo.oxo.csv")
+write.csv(re.phz.vivo.ow, file="./data/processed/re.phz.vivo.ow.csv")
