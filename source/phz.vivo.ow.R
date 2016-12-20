@@ -20,3 +20,15 @@ for(name in names(tests)) {
 }
 
 #No significant difference between group 0 (control) and group 1 
+
+boxplot(oxo ~ Gruppe, data=phz.vivo.ow,
+        main="Phenelzine - 8oxoGuo Ratio",
+        ylab="8oxoGuo Pr. 10E6 Guo", 
+        col=c("olivedrab", "olivedrab1"), 
+        names=c("Control", "Phenelzine"))
+a <- mean(phz.vivo.ow$oxo[which(phz.vivo.ow$Gruppe==0)], na.rm=TRUE)
+b <- mean(phz.vivo.ow$oxo[which(phz.vivo.ow$Gruppe==1)], na.rm=TRUE)
+text(1,9.5, sprintf("mean %.1f",round(a,1)))
+text(2,8, sprintf("mean %.1f",round(b,1)))
+
+
