@@ -27,10 +27,24 @@ results.cm <- results(test.c$r, test.c$P)
 
 control <- results.cm[which(results.cm$cor > 0.8 | results.cm$cor < -0.8 & results.cm$p < 0.05),]
 
+control.in <- subset(control, row=="weight" | 
+                       row=="OXCA.CII" | row=="H202.ROX" | row=="FPM.CII" | 
+                       row=="FPM.ETS" | row=="FPM.CI.CII" | column=="weight" | 
+                       column=="OXCA.CII" | column=="H202.ROX" | 
+                       column=="FPM.CII" | column=="FPM.ETS" | 
+                       column=="FPM.CI.CII" | column=="oxo")
+
 #Correlation for treated group
 test.t <- rcorr(ecs.fall.tm, type="pearson")
 
 results.tm <- results(test.t$r, test.t$P)
 
 treated <- results.tm[which(results.tm$cor > 0.8 | results.tm$cor < -0.8 & results.tm$p < 0.05),]
+
+treated.in <- subset(treated, row=="weight" | 
+                       row=="OXCA.CII" | row=="H202.ROX" | row=="FPM.CII" | 
+                       row=="FPM.ETS" | row=="FPM.CI.CII" | column=="weight" | 
+                       column=="OXCA.CII" | column=="H202.ROX" | 
+                       column=="FPM.CII" | column=="FPM.ETS" | 
+                       column=="FPM.CI.CII" | column=="oxo")
 
