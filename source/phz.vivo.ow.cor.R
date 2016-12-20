@@ -27,9 +27,13 @@ results.cm <- results(test.c$r, test.c$P)
 
 control <- results.cm[which(results.cm$cor > 0.8 | results.cm$cor < -0.8 & results.cm$p < 0.05),]
 
+control.in <- subset(control, column=="H202.ROX" | column=="weight" | column=="oxo")
+
 #Correlation for treated group 1
 test.t1 <- rcorr(phz.vivo.t1m, type="pearson")
 
 results.t1m <- results(test.t1$r, test.t1$P)
 
 treated <- results.t1m[which(results.t1m$cor > 0.8 | results.t1m$cor < -0.8 & results.t1m$p < 0.05),]
+
+treated.in <- subset(treated, column=="H202.ROX" | column=="weight" | column=="oxo")
