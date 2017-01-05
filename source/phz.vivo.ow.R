@@ -25,10 +25,25 @@ boxplot(oxo ~ Gruppe, data=phz.vivo.ow,
         main="Phenelzine - 8oxoGuo Ratio",
         ylab="8oxoGuo Pr. 10E6 Guo", 
         col=c("olivedrab", "olivedrab1"), 
-        names=c("Control", "Phenelzine"))
+        names=c("Control", "Phenelzine"), 
+        las=1)
 a <- mean(phz.vivo.ow$oxo[which(phz.vivo.ow$Gruppe==0)], na.rm=TRUE)
 b <- mean(phz.vivo.ow$oxo[which(phz.vivo.ow$Gruppe==1)], na.rm=TRUE)
-text(1,9.5, sprintf("mean %.1f",round(a,1)))
-text(2,8, sprintf("mean %.1f",round(b,1)))
+text(1,9.6, sprintf("mean %.1f",round(a,1)))
+text(2,8.1, sprintf("mean %.1f",round(b,1)))
+
+boxplot(weight ~ Gruppe, data=phz.vivo.ow,
+        main="Phenelzine - Weight",
+        ylab="Gram", 
+        col=c("olivedrab", "olivedrab1"), 
+        names=c("Control", "Phenelzine"), 
+        las=1,
+        ylim=c(340,480))
+a <- mean(phz.vivo.ow$weight[which(phz.vivo.ow$Gruppe==0)], na.rm=TRUE)
+b <- mean(phz.vivo.ow$weight[which(phz.vivo.ow$Gruppe==1)], na.rm=TRUE)
+text(1,475, sprintf("mean %.1f",round(a,1)))
+text(2,412, sprintf("mean %.1f **",round(b,1)))
+title(sub="**: p-value < 0.01", adj=0)
+
 
 
