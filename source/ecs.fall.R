@@ -19,34 +19,23 @@ for(name in names(tests)) {
 }
 
 
+ecs.fall0 <- subset(ecs.fall, Gruppe == 0)
+ecs.fall1 <- subset(ecs.fall, Gruppe == 1)
 
+shapiro.test(ecs.fall0$oxo)
+shapiro.test(ecs.fall1$oxo)
 
+hist(ecs.fall0$oxo, las=1)
 
+hist(ecs.fall1$oxo, las=1)
 
+bartlett.test(oxo ~ Gruppe, data=ecs.fall)
 
-# for(testa in tests) {
-#  for(testb in tests) {
-#    if(test[[1]]) {
-#      cor(testa[[3]], testb[[3]], method="pearson")
-#    }
-#  }
-#}
+shapiro.test(ecs.fall0$weight)
+shapiro.test(ecs.fall1$weight)
 
+hist(ecs.fall0$weight, las=1)
 
-# alpha = 0.05
-# for(name in names(ecs.fall)) {
-#   ttest = t.test(ecs.fall[[name]] ~ ecs.fall$Gruppe, var.equal=TRUE)
-#   if(ttest["p.value"] < alpha) {
-#     print(name)
-#     print(ttest)
-#   }
-# if(ttest["p.value"] < alpha) {
-#   print(ttest)
-#   significant <- cbind(significant, x)
-# }S = data.frame(matrix(NA,14,0))
-# A = mapply(function(col, colname, test) {
-#   if(test["p.value"] < 0.05) {
-#     return(col)
-#   }
-# }, cols, colnames, tests, SIMPLIFY=TRUE)
-# }
+hist(ecs.fall1$weight, las=1)
+
+bartlett.test(weight ~ Gruppe, data=ecs.fall)
