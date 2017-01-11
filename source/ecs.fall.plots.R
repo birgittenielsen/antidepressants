@@ -14,12 +14,12 @@ boxplot(oxo ~ Gruppe, data=ecs.fall,
         ylab="8oxoGuo Pr. 10E6 Guo", 
         col=c(16,11),
         las=1, 
-        ylim=c(0,10))
+        ylim=c(0,15))
 
 a <- mean(ecs.fall$oxo[which(ecs.fall$Gruppe==0)], na.rm=TRUE)
 b <- mean(ecs.fall$oxo[which(ecs.fall$Gruppe==1)], na.rm=TRUE)
-text(1,5, sprintf("mean %.1f",round(a,1)))
-text(2,9.5, sprintf("mean %.1f",round(b,1)))
+text(1,6, sprintf("mean %.1f",round(a,1)))
+text(2,10.3, sprintf("mean %.1f",round(b,1)))
 
 boxplot(H202.ROX ~ Gruppe, data=ecs.fall, 
         main="ECS - H202 Flux in Residual Oxygen Consumption State", 
