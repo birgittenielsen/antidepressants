@@ -3,7 +3,7 @@ phz.vitro <- read.csv("./data/processed/re.phz.vitro.csv", header=TRUE)
 boxplot(H202.ROX ~ Gruppe, 
         data=phz.vitro, 
         ylim=c(0,2), 
-        names=c("Control", "0.066 mM PHZ", "0.033 mM PHZ"),
+        names=c("Control", "0.033 mM PHZ", "0.066 mM PHZ"),
         col=c("olivedrab", "olivedrab1", "olivedrab3"), 
         main="Phenelzine In Vitro
         H202 Flux Non-Electron Transfer System", 
