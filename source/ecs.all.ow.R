@@ -1,29 +1,54 @@
-# SKAL IKKE BRUGES!
+ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
-weight <- read.csv("./data/raw/weight.copy.csv", header=TRUE, sep=";", dec=",")
+ecs.fall.ow <- ecs.fall[c(2:3,25:26)]
 
-weight <- weight[order(weight$ID),]
+ecs.fall.ow <- na.omit(ecs.fall.ow)
 
-weight.ecs <- subset(weight, ID < 21 | ID > 1000)
+a <- min(ecs.fall.ow$oxo)
+b <- max(ecs.fall.ow$oxo)
+c <- mean(ecs.fall.ow$oxo)
+d <- sd(ecs.fall.ow$oxo)
 
-weight.ecs$Gruppe <- c(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1)
+ecs.fall.ow$norm1 <- (ecs.fall.ow$oxo-a)/b
+ecs.fall.ow$norm2 <- (ecs.fall.ow$oxo-c)/d
 
-oxo.all <- read.csv("./data/raw/oxo.all.csv", header=TRUE, sep=";", dec=",")
-oxo.all <- oxo.all[order(oxo.all$ID),]
+ecs.spring <- read.csv("./data/processed/re.ecs.spring.csv", header=TRUE)
 
-oxo.all.ecs <- subset(oxo.all, ID < 21 | ID > 1000)
+ecs.spring.ow <- ecs.spring[c(2:3,25:26)]
 
-stopifnot(all(weight.ecs$ID == oxo.all.ecs$ID))
+ecs.spring.ow <- subset(ecs.spring.ow, oxo != 66.7)
 
-weight.ecs$oxo <- oxo.all.ecs$Ratio
+e <- min(ecs.spring.ow$oxo)
+f <- max(ecs.spring.ow$oxo)
+g <- mean(ecs.spring.ow$oxo)
+h <- sd(ecs.spring.ow$oxo)
 
-ecs.all.ow <- subset(weight.ecs, oxo != 66.7)
+ecs.spring.ow$norm1 <- (ecs.spring.ow$oxo-e)/f
+ecs.spring.ow$norm2 <- (ecs.spring.ow$oxo-g)/h
 
-a <- min(ecs.all.ow$oxo[which(ecs.all.ow$Gruppe==0)], na.rm=TRUE)
-b <- min(ecs.all.ow$oxo[which(ecs.all.ow$Gruppe==1)], na.rm=TRUE)
-c <- max(ecs.all.ow$oxo[which(ecs.all.ow$Gruppe==0)], na.rm=TRUE)
-d <- max(ecs.all.ow$oxo[which(ecs.all.ow$Gruppe==1)], na.rm=TRUE)
+ecs.all.ow <- rbind(ecs.spring.ow, ecs.fall.ow)
 
-ecs.all.ow$oxo-1
+t.test(norm1 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
+t.test(norm2 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
 
-ecs.all.ow$norm <- ecs.all.ow$oxo[which(ecs.all.ow$Gruppe==0)]-a)/c
+boxplot(norm1 ~ Gruppe, data=ecs.all.ow,
+        names=c("Control", "ECS"), 
+        col=c(16,11), 
+        main="ECS All - Normalized 8-oxoGuo", 
+        ylim=c(0,0.8))
+
+i <- mean(ecs.all.ow$norm1[which(ecs.all.ow$Gruppe==0)], na.rm=TRUE)
+j <- mean(ecs.all.ow$norm1[which(ecs.all.ow$Gruppe==1)], na.rm=TRUE)
+text(1,0.23, sprintf("mean %.1f",round(i,1)))
+text(2,0.76, sprintf("mean %.1f",round(j,1)))
+
+boxplot(norm2 ~ Gruppe, data=ecs.all.ow,
+        names=c("Control", "ECS"), 
+        col=c(16,11), 
+        main="ECS All - Normalized 8-oxoGuo",
+        ylim=c(-1.2,2.5))
+
+i <- mean(ecs.all.ow$norm2[which(ecs.all.ow$Gruppe==0)], na.rm=TRUE)
+j <- mean(ecs.all.ow$norm2[which(ecs.all.ow$Gruppe==1)], na.rm=TRUE)
+text(1,-0.1, sprintf("mean %.1f",round(i,1)))
+text(2,2.41, sprintf("mean %.1f",round(j,1)))
