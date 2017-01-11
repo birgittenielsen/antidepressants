@@ -18,3 +18,11 @@ text(2,1.05, sprintf("mean %.1f",round(b,1)))
 text(3,1, sprintf("mean %.1f **", round(c,1)))
 
 title(sub="**:p-value<0.01, n control: 8, n 0.066 mM PHZ: 8, n 0.033 mM PHZ: 8.", adj=0.1)
+
+phz.vitro. <- read.csv("./data/raw/phz.vitro.csv", header=TRUE, sep=";", dec=",")
+
+boxplot(H202 ~ Gruppe*State, data=phz.vitro., 
+        col=c(16,11), 
+        main="PHZ - H2O2 Flux", 
+        ylab="pmol/ml*s")
+legend("topleft", c("Control", "ECS"), col=c(8,11), pch=15)
