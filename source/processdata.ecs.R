@@ -13,10 +13,14 @@ for( id in c(9,4,13,19,12,16,14,11) ) {
 oxo.all <- oxo.all[order(oxo.all$ID),]
 
 # Reshape
-re.ecs.spring <- reshape(ecs.spring, timevar="State", idvar=c("ID", "Gruppe"), 
+re.ecs.spring <- reshape(ecs.spring, 
+                         timevar="State", 
+                         idvar=c("ID", "Gruppe"), 
                          direction="wide")
 re.ecs.spring <- re.ecs.spring[order(re.ecs.spring$ID),]
-re.ecs.fall <- reshape(ecs.fall, timevar="State", idvar=c("ID", "Gruppe"), 
+re.ecs.fall <- reshape(ecs.fall, 
+                       timevar="State", 
+                       idvar=c("ID", "Gruppe"), 
                        direction="wide")
 re.ecs.fall <- re.ecs.fall[order(re.ecs.fall$ID),]
 
