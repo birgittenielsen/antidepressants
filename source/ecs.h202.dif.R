@@ -14,7 +14,7 @@ ecs.fall.H202.rox <- na.omit(ecs.fall.H202.rox)
 t.test(Procentvis.Forskel ~ Gruppe, data=ecs.fall.H202.rox, var.equal=TRUE)
 
 boxplot(Procentvis.Forskel ~ Gruppe, data=ecs.fall.H202.rox,
-        names=c("Control", "ECS"), 
+        names=c("Control", "ECS"), 7
         col=c(16,11), 
         main="Procentvis stigning af H202 til ROX State")
 
