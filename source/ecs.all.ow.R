@@ -31,10 +31,28 @@ ecs.spring.ow$norm3 <- ecs.spring.ow$oxo-g
 ecs.spring.ow$norm4 <- log(ecs.spring.ow$oxo)
 
 ecs.all.ow <- rbind(ecs.spring.ow, ecs.fall.ow)
-ecs.all.ow <- subset(ecs.all.ow, oxo != 14.8)
-ecs.all.ow <- subset(ecs.all.ow, oxo != 12.4)
+#ecs.all.ow <- subset(ecs.all.ow, oxo != 14.8)
+#ecs.all.ow <- subset(ecs.all.ow, oxo != 12.4)
+ecs.all.ow$oxo.cs <- ecs.all.ow$oxo/ecs.all.ow$cs
 
-t.test(norm1 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
+alpha <- 0.05
+cols <- ecs.all.ow[3:10]
+colnames <- names(ecs.all.ow[3:10])
+tests <- lapply(cols, function(x) {
+  test = t.test(x ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
+  if(test["p.value"] < alpha) {
+    return(list(TRUE, test, x))
+  } else {
+    return(list(FALSE, "Not statistically significant"))
+  }
+})
+
+
+for(name in names(tests)) {
+  print(name)
+  print(tests[[name]])
+}
+
 
 boxplot(norm1 ~ Gruppe, data=ecs.all.ow,
         names=c("Control", "ECS"), 
@@ -49,8 +67,6 @@ text(2,0.76, sprintf("mean %.1f",round(j,1)))
 
 title(sub="p-value: 0.02376", adj=0)
 
-t.test(norm2 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
-
 boxplot(norm2 ~ Gruppe, data=ecs.all.ow,
         names=c("Control", "ECS"), 
         col=c(16,11), 
@@ -63,7 +79,3 @@ text(1,-0.1, sprintf("mean %.1f",round(i,1)))
 text(2,2.41, sprintf("mean %.1f",round(j,1)))
 
 title(sub="p-value: 0.01732", adj=0)
-
-t.test(norm3 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
-
-t.test(norm4 ~ Gruppe, data=ecs.all.ow, var.equal=TRUE)
