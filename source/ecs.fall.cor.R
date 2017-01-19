@@ -9,6 +9,8 @@ ecs.fall.t <- subset(ecs.fall, Gruppe==1)
 ecs.fall.cm <- as.matrix(ecs.fall.c)
 ecs.fall.tm <- as.matrix(ecs.fall.t)
 
+library(Hmisc)
+
 #rcorr returns r: the correlation matrix, n, p
 results <- function(cormat, pmat) {
   ut <- upper.tri(cormat)
