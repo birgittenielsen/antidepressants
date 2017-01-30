@@ -1,11 +1,12 @@
 ecs.fall <- read.csv("./data/processed/re.ecs.fall.csv", header=TRUE)
 
-normalized <- ecs.fall[4:27]
+normalized <- ecs.fall[4:24]
 
 for(i in names(normalized)) {
   normalized[i] <- normalized[i]/ecs.fall$cs
 }
 
+normalized$weight <- ecs.fall$weight
 normalized$cs <-ecs.fall$cs
 normalized$ID <- ecs.fall$ID
 normalized$Gruppe <- ecs.fall$Gruppe
